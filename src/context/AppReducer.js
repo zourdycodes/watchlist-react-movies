@@ -13,6 +13,15 @@ const AppReducer = (state, action) => {
           (movie) => movie.id !== action.payload
         ),
       };
+
+    case "ADD_MOVIE_TO_WATCHED":
+      return {
+        ...state,
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+        watched: [action.payload, ...state.watched],
+      };
     default:
       return false;
   }
