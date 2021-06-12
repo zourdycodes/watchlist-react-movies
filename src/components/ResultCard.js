@@ -5,12 +5,16 @@ const ResultCard = ({ movie }) => {
   /**
    * @param  {} GlobalContext
    */
-  const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
+  const { addMovieToWatchlist, watchlist, watched, addMovieToWatched } =
+    useContext(GlobalContext);
 
   let storedMovie = watchlist.find((o) => o.id === movie.id);
+  let storedMovieWatched = watched.find((o) => o.id === movie.id);
 
   //* disabled the button if there is same movie
   const watchlistDisabled = storedMovie ? true : false;
+
+  const watchedDisabled = storedMovieWatched ? true : false;
 
   return (
     <div className="result-card">
@@ -42,6 +46,14 @@ const ResultCard = ({ movie }) => {
             onClick={() => addMovieToWatchlist(movie)}
           >
             <i className="fas fa-plus icon__add"></i> Add to your Watchlist
+          </button>
+
+          <button
+            className="btn"
+            disabled={watchedDisabled}
+            onClick={() => addMovieToWatched(movie)}
+          >
+            <i className="fas fa-plus icon__add"></i> Add to Watched
           </button>
         </div>
       </div>

@@ -66,7 +66,7 @@ export const GlobalProvider = (props) => {
 
   const removeFromWatched = (id) => {
     dispatch({
-      type: "REMOVE_FROM_WATCHLIST",
+      type: "REMOVE_FROM_WATCHED",
       payload: id,
     });
   };
